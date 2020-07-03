@@ -9,12 +9,8 @@ RUN cd /usr/src && \
     git clone https://github.com/stefanlaheij/landroid-bridge.git && \
     cd /usr/src/landroid-bridge
 
-RUN apk add \
-    python \
-    make \
-    g++ \
-    && npm install
-
+RUN apk add python make g++
+RUN npm install
 RUN npm run clean
 RUN npm run grunt
 RUN npm prune --production
