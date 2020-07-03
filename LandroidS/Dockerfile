@@ -9,14 +9,14 @@ RUN cd /usr/src && \
     git clone https://github.com/stefanlaheij/landroid-bridge.git && \
     cd /usr/src/landroid-bridge
 
-RUN apk add --virtual build-dependencies python make g++
+RUN apk add --virtual build-base python make g++
 RUN npm install
 
 RUN npm run clean
 RUN npm run grunt
 RUN npm prune --production
 
-RUN apk del build-dependencies
+RUN apk del build-base
 
 COPY run.sh /
 RUN chmod a+x /run.sh
