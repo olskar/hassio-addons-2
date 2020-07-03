@@ -9,13 +9,8 @@ RUN cd /usr/src && \
     git clone https://github.com/stefanlaheij/landroid-bridge.git && \
     cd /usr/src/landroid-bridge
 
-RUN apk add --no-cache --virtual .gyp \
-        python \
-        make \
-        g++ \
-    && npm install \
-    && apk del .gyp
-
+RUN apk add --no-cache python make g++
+RUN npm install
 RUN npm run clean
 RUN npm run grunt
 RUN npm prune --production
